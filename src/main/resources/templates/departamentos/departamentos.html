@@ -28,8 +28,11 @@
             <h1>Lista de departamentos</h1>
         </div>
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-2">
                 <a th:href="@{/departamentos/nuevo}" class="btn btn-primary btn-sm mb3">Agregar departamento</a>
+            </div>
+            <div class="col-2">
+                <a th:href="@{/empleados}" class="btn btn-primary btn-sm mb3">Gestionar empleados</a>
             </div>
         </div>
         <br>
@@ -48,6 +51,7 @@
                     <td th:text="${departamento.presupuesto}">Presupuesto</td>
                     <td th:text="${departamento.gastos}">Gastos</td>
                     <td>
+                        <a th:href="@{/departamentos/editar/{codigo}(codigo=${departamento.codigo})}" class="btn btn-info">Editar</a>
                         <a th:href="@{/departamentos/eliminar/{codigo}(codigo=${departamento.codigo})}" class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>

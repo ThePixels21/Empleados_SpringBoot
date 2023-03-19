@@ -21,14 +21,6 @@ public class Departamento {
     private double gastos;
 
     public Departamento() {}
-    
-    public Departamento(int codigo, String nombre, double presupuesto, double gastos) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.presupuesto = presupuesto;
-        this.gastos = gastos;
-    }
-
 
     public int getCodigo() {
         return codigo;

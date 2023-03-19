@@ -35,8 +35,28 @@ public class DepartamentoController {
         return "redirect:/departamentos";
     }
 
+    @GetMapping("/departamentos/editar/{codigo}")
+    public String mostrarFormActualizar(@PathVariable int codigo, Model modelo) {
+        modelo.addAttribute("departamento", servicioDep.obtenerDepartamentoPorId(codigo));
+        modelo.addAttribute("departamentos", servicioDep.listarTodosLosDepartamentos());
+        return "departamentos/editar_departamento";
+    }
+
+    @PostMapping("/departamentos/{codigo}")
+    public String actualizarDepartamento(@PathVariable int codigo, @ModelAttribute("departamento") Departamento departamento, Model modelo) {
+        Departamento dep = servicioDep.obtenerDepartamentoPorId(codigo);
+        dep.setCodigo(codigo);
+        dep.setNombre(departamento.getNombre());
+        dep.setPresupuesto(departamento.getPresupuesto());
+        dep.setGastos(departamento.getGastos());
+
+        servicioDep.actualizarDepartamento(dep);
+
+        return "redirect:/departamentos";
+    }
+
     @GetMapping("/departamentos/eliminar/{codigo}")
-    public String eliminarEmpleado(@PathVariable int codigo) {
+    public String eliminarDepartamento(@PathVariable int codigo) {
         servicioDep.eliminarDepartamento(codigo);
         return "redirect:/departamentos";
     }
