@@ -10,9 +10,9 @@ public interface DepartamentoServicio {
 
     public Departamento guardarDepartamento(Departamento departamento);
 
-    public Departamento obtenerDepartamentoPorId(int id);
+    public Departamento obtenerDepartamentoPorId(long id);
 
     public Departamento actualizarDepartamento(Departamento departamento);
 
-    public void eliminarDepartamento(int id);
+    public void eliminarDepartamento(long id);
 }

@@ -1,5 +1,7 @@
 package com.crud.crud.entity;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -9,7 +11,7 @@ public class Departamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codigo")
-    private int codigo;
+    private long codigo;
 
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
@@ -20,13 +22,17 @@ public class Departamento {
     @Column(name = "gastos", nullable = false)
     private double gastos;
 
+    @OneToMany(mappedBy="departamento")
+    private List<Empleado> empleados;
+
+
     public Departamento() {}
 
-    public int getCodigo() {
+    public long getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(long codigo) {
         this.codigo = codigo;
     }
 
@@ -52,6 +58,14 @@ public class Departamento {
 
     public void setGastos(double gastos) {
         this.gastos = gastos;
+    }
+
+    public List<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    public void setEmpleados(List<Empleado> empleados) {
+        this.empleados = empleados;
     }
 
 }

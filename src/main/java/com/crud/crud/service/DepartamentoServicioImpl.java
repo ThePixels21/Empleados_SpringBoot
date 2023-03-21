@@ -25,7 +25,7 @@ public class DepartamentoServicioImpl implements DepartamentoServicio {
     }
 
     @Override
-    public Departamento obtenerDepartamentoPorId(int id) {
+    public Departamento obtenerDepartamentoPorId(long id) {
         return repositorio.findById(id).get();
     }
 
@@ -35,7 +35,7 @@ public class DepartamentoServicioImpl implements DepartamentoServicio {
     }
 
     @Override
-    public void eliminarDepartamento(int id) {
+    public void eliminarDepartamento(long id) {
         repositorio.deleteById(id);
     }
     

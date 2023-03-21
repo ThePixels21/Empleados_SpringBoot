@@ -25,7 +25,7 @@ public class EmpleadoServicioImpl implements EmpleadoServicio {
     }
 
     @Override
-    public Empleado obtenerEmpleadoPorId(int id) {
+    public Empleado obtenerEmpleadoPorId(long id) {
         return repositorio.findById(id).get();
     }
 
@@ -35,7 +35,7 @@ public class EmpleadoServicioImpl implements EmpleadoServicio {
     }
 
     @Override
-    public void eliminarEmpleado(int id) {
+    public void eliminarEmpleado(long id) {
         repositorio.deleteById(id);
     }
 }

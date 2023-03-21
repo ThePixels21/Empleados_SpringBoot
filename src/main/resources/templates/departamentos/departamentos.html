@@ -52,7 +52,7 @@
                     <td th:text="${departamento.gastos}">Gastos</td>
                     <td>
                         <a th:href="@{/departamentos/editar/{codigo}(codigo=${departamento.codigo})}" class="btn btn-info">Editar</a>
-                        <a th:href="@{/departamentos/eliminar/{codigo}(codigo=${departamento.codigo})}" class="btn btn-danger">Eliminar</a>
+                        <a th:if="${departamento.empleados.isEmpty()}" th:href="@{/departamentos/eliminar/{codigo}(codigo=${departamento.codigo})}" class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>
             </tbody>

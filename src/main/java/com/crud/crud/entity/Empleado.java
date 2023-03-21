@@ -10,7 +10,7 @@ public class Empleado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codigo")
-    private int codigo;
+    private long codigo;
 
     @Column(name = "nif", nullable = false, length = 9)
     private String nif;
@@ -32,11 +32,11 @@ public class Empleado {
         this.departamento = new Departamento();
     }
 
-    public int getCodigo() {
+    public long getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(long codigo) {
         this.codigo = codigo;
     }
 
