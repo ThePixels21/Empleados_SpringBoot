@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base/base.html :: 'head'">
+    <title>Empleado | 500</title>
+</head>
+
+<body>
+    <h3>Ha ocurrido un error !Oops</h3>
+    <p th:text="${error}"></p>
+    <p th:text="${status}"></p>
+    <p th:text="${timestamp}"></p>
+    <hr>
+    <p th:text="${path}"></p>
+</body>
+
+</html>
