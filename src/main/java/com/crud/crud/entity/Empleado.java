@@ -1,11 +1,13 @@
 package com.crud.crud.entity;
 
+import java.io.Serializable;
+
 import jakarta.persistence.*;
 
 @Entity
 @Embeddable
 @Table(name = "empleado")
-public class Empleado {
+public class Empleado implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
