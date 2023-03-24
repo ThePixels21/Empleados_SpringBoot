@@ -3,6 +3,7 @@ package com.crud.crud.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.crud.crud.entity.Departamento;
 import com.crud.crud.service.DepartamentoServicio;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class DepartamentoController {
@@ -30,7 +33,10 @@ public class DepartamentoController {
     }
 
     @PostMapping("/departamentos")
-    public String guardarDepartamento(@ModelAttribute("departamento") Departamento departamento) {
+    public String guardarDepartamento(@ModelAttribute("departamento") @Valid Departamento departamento, BindingResult resultado) {
+        if(resultado.hasErrors()) {
+            return "departamentos/crear_departamento";
+        }
         servicioDep.guardarDepartamento(departamento);
         return "redirect:/departamentos";
     }
@@ -43,7 +49,12 @@ public class DepartamentoController {
     }
 
     @PostMapping("/departamentos/{codigo}")
-    public String actualizarDepartamento(@PathVariable int codigo, @ModelAttribute("departamento") Departamento departamento, Model modelo) {
+    public String actualizarDepartamento(@PathVariable int codigo, @ModelAttribute("departamento") @Valid Departamento departamento, BindingResult resultado, Model modelo) {
+        if(resultado.hasErrors()) {
+            modelo.addAttribute("departamento", servicioDep.obtenerDepartamentoPorId(codigo));
+            modelo.addAttribute("departamentos", servicioDep.listarTodosLosDepartamentos());
+            return "departamentos/editar_departamento";
+        }
         Departamento dep = servicioDep.obtenerDepartamentoPorId(codigo);
         dep.setCodigo(codigo);
         dep.setNombre(departamento.getNombre());

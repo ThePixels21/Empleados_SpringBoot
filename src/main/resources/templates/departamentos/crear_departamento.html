@@ -30,19 +30,22 @@
                         <div class="form-group">
                             <label>Nombre: </label>
                             <input type="text" name="nombre" th:field="*{nombre}" class="form-control"
-                                placeholder="Digite su nombre" required>
+                                placeholder="Digite su nombre">
+                            <span class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
                         </div>
 
                         <div class="form-group">
                             <label>Presupuesto: </label>
                             <input type="number" name="presupuesto" th:field="*{presupuesto}" class="form-control"
                                 placeholder="Digite el presupuesto" required>
+                            <span class="text-danger" th:if="${#fields.hasErrors('presupuesto')}" th:errors="*{presupuesto}"></span>
                         </div>
 
                         <div class="form-group">
                             <label>Gastos: </label>
                             <input type="number" name="gastos" th:field="*{gastos}" class="form-control"
                                 placeholder="Digite los gastos" required>
+                            <span class="text-danger" th:if="${#fields.hasErrors('gastos')}" th:errors="*{gastos}"></span>
                         </div>
 
                         <div class="box-footer">

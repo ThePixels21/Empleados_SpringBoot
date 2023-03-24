@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+
 
 @Entity
 @Table(name = "departamento")
@@ -14,12 +17,15 @@ public class Departamento implements Serializable {
     @Column(name = "codigo")
     private long codigo;
 
+    @NotEmpty(message = "No puede estar vacío")
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
 
+    @Min(value = 0, message = "Valor mínimo 0")
     @Column(name = "presupuesto", nullable = false)
     private double presupuesto;
 
+    @Min(value = 0, message = "Valor mínimo 0")
     @Column(name = "gastos", nullable = false)
     private double gastos;
 

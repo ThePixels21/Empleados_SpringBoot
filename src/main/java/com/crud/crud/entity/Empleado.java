@@ -3,6 +3,7 @@ package com.crud.crud.entity;
 import java.io.Serializable;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Embeddable
@@ -14,15 +15,19 @@ public class Empleado implements Serializable{
     @Column(name = "codigo")
     private long codigo;
 
+    @NotEmpty(message = "No puede estar vacío")
     @Column(name = "nif", nullable = false, length = 9)
     private String nif;
 
+    @NotEmpty(message = "No puede estar vacío")
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
 
+    @NotEmpty(message = "No puede estar vacío")
     @Column(name = "apellido1", nullable = false, length = 100)
     private String apellido1;
 
+    @NotEmpty(message = "No puede estar vacío")
     @Column(name = "apellido2", nullable = false, length = 100)
     private String apellido2;
 
